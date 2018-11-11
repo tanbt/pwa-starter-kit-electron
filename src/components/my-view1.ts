@@ -10,6 +10,14 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 import { html } from '@polymer/lit-element';
 import { PageViewElement } from './page-view-element.js';
+import '@vaadin/vaadin-split-layout/vaadin-split-layout.js';
+import '@vaadin/vaadin-designer-viewport/vaadin-designer-viewport.js';
+import '@vaadin/vaadin-designer-paper/vaadin-designer-paper.js';
+import '@vaadin/vaadin-designer-palette/vaadin-designer-palette.js';
+//import '@vaadin/vaadin-designer-license-dialog/vaadin-designer-license-dialog.js';
+import '@vaadin/vaadin-dnd/vaadin-dnd.js';
+import '@vaadin/vaadin-designer-outline/vaadin-designer-outline.js';
+import '@vaadin/vaadin-designer-properties/vaadin-designer-properties.js';
 
 // These are the shared styles needed by this element.
 import { SharedStyles } from './shared-styles.js';
@@ -18,18 +26,30 @@ class MyView1 extends PageViewElement {
   protected render() {
     return html`
       ${SharedStyles}
-      <section>
-        <h2>Static page</h2>
-        <p>This is a text-only page.</p>
-        <p>It doesn't do anything other than display some static text.</p>
-      </section>
-      <section>
-        <h2>Welcome</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam ac nisi orci. Maecenas sollicitudin diam in diam efficitur cursus. Morbi sollicitudin in justo tincidunt placerat. Integer tincidunt elementum nisi, eu ornare dolor lacinia eget. Fusce pulvinar massa eget odio placerat, commodo molestie ipsum tempus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Suspendisse porttitor id purus eu cursus. Suspendisse arcu nulla, mattis vel hendrerit et, malesuada a elit. Nam at diam ornare, aliquet est sed, malesuada metus. Cras nec enim vel nibh tincidunt euismod ut et enim. Etiam pharetra eros in sodales iaculis. Duis sagittis urna et cursus mollis. Cras tempor rutrum est. Praesent sollicitudin ligula at laoreet placerat. Praesent tortor dui, semper in sapien non, pharetra luctus turpis.</p>
-      </section>
-      <section>
-        <p>Vestibulum at est ex. Aenean id ligula id nibh dictum laoreet. Etiam non semper erat. Pellentesque eu justo rhoncus diam vulputate facilisis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam feugiat metus ex, vel fringilla massa tincidunt sit amet. Nunc facilisis bibendum tristique. Mauris commodo, dolor vitae dapibus fermentum, odio nibh viverra lorem, eu cursus diam turpis et sapien. Nunc suscipit tortor a ligula tincidunt, id hendrerit tellus sollicitudin.</p>
-      </section>
+
+        <!-- <vaadin-designer-license-dialog license-state="[[_licenseState]]" validation-url="[[_licenseValidationUrl]]"></vaadin-designer-license-dialog> -->
+
+        <vaadin-split-layout id="split-layout-container">
+          <vaadin-designer-viewport id="viewport" content-width="{{paperWidth}}" content-height="{{paperHeight}}"
+            editable-element="[[editableElementTag]]">
+            <vaadin-designer-paper id="paper" selected="{{selected}}" mode="[[mode]]" element-resolver="[[resolver]]" iframe>
+              <vaadin-dnd id="vaadinDnd" editable-element="[[editableElementTag]]" broadcaster="[[dndBroadcaster]]"
+                internal-id-name="[[designerSourceId]]" enable-dnd="[[isEditMode]]">
+                <iframe id="design-element-wrapper"></iframe>
+              </vaadin-dnd>
+            </vaadin-designer-paper>
+          </vaadin-designer-viewport>
+
+          <vaadin-split-layout id="components-wrapper">
+            <vaadin-designer-palette id="palette" web-component-imports="[[webComponentImports]]"></vaadin-designer-palette>
+
+            <vaadin-split-layout orientation="vertical">
+              <vaadin-designer-outline id="outline" items="[[outlineItems]]" selected-id="[[outlineSelectedId]]"
+                selection-changed-callback="[[_boundOutlineSelectionChangedCallback]]"></vaadin-designer-outline>
+              <vaadin-designer-properties id="properties" items="[[propertiesItems]]"></vaadin-designer-properties>
+            </vaadin-split-layout>
+          </vaadin-split-layout>
+        </vaadin-split-layout>
     `;
   }
 }
