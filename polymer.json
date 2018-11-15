@@ -11,56 +11,23 @@
   ],
   "builds": [
     {
-      "name": "esm-bundled",
-      "browserCapabilities": [
-        "es2015",
-        "modules"
-      ],
-      "js": {
-        "minify": true
-      },
-      "css": {
-        "minify": true
-      },
-      "html": {
-        "minify": true
-      },
-      "bundle": true,
-      "addServiceWorker": true
-    },
-    {
       "name": "es6-bundled",
+      "basePath": false,
       "browserCapabilities": [
         "es2015"
       ],
       "js": {
         "compile": "es2015",
-        "minify": true,
+        "minify": false,
         "transformModulesToAmd": true
       },
       "css": {
-        "minify": true
+        "minify": false
       },
       "html": {
-        "minify": true
+        "minify": false
       },
-      "bundle": true,
-      "addServiceWorker": true
-    },
-    {
-      "name": "es5-bundled",
-      "js": {
-        "compile": "es5",
-        "minify": true,
-        "transformModulesToAmd": true
-      },
-      "css": {
-        "minify": true
-      },
-      "html": {
-        "minify": true
-      },
-      "bundle": true,
+      "bundle": false,
       "addServiceWorker": true
     }
   ],

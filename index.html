@@ -25,7 +25,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       a) Add a `basePath` property to the build configuration in your `polymer.json`.
       b) Use the `--base-path` command-line option for `polymer build`.
     -->
-    <base href="/">
+    <base href=".">
 
     <link rel="icon" href="images/favicon.ico">
 
@@ -70,7 +70,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       if ('serviceWorker' in navigator) {
         window.addEventListener('load', function() {
           navigator.serviceWorker.register('service-worker.js', {
-            scope: '/',
+            scope: '.',
           });
         });
       }
@@ -102,15 +102,16 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         -webkit-font-smoothing: antialiased;
       }
     </style>
+
+    <!-- Load webcomponents-loader.js to check and load any polyfills your browser needs -->
+    <script src="node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
+    <!-- Built with love using PWA Starter Kit -->
+    <script type="module" src="src/components/my-app.js" crossorigin></script>
   </head>
   <body>
     <my-app appTitle="my app"></my-app>
     <noscript>
       Please enable JavaScript to view this website.
     </noscript>
-    <!-- Load webcomponents-loader.js to check and load any polyfills your browser needs -->
-    <script src="node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
-    <!-- Built with love using PWA Starter Kit -->
-    <script type="module" src="src/components/my-app.js" crossorigin></script>
   </body>
 </html>
