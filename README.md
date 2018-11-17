@@ -6,6 +6,18 @@
 >
 > See the list of Known Issues and TODOs, below, for updates.
 
+### Run with Electron
+```
+npm install
+npm build
+npm start
+```
+### Run with Polymer CLI
+```
+npm run serve
+```
+
+
 # PWA Starter Kit
 
 This sample app is a starting point for building PWAs. Out of the box, the template
