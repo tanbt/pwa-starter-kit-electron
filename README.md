@@ -17,6 +17,70 @@ npm start
 npm run serve
 ```
 
+### Application distribution
+
+[On Windows](https://electronjs.org/docs/tutorial/application-distribution):
+
+* Download and extract the [prebuild electron](https://github.com/electron/electron/releases/download/v3.0.9/electron-v3.0.9-win32-x64.zip) (choose the correct version) to `electron` directory
+* Copy the running sources (which are used when run the project with npm `electron .`) into electron/`resources/app` such as: index.html and related front-end resources, main.js, package.json.
+* Execute `electron.exe` on Windows
+* The `electron` directory will then be your distribution to deliver to final users.
+
+##### [Packaging Your App into a File](https://electronjs.org/docs/tutorial/application-packaging)
+
+To use an `asar` archive to replace the `app` folder above, you need to rename the archive to `app.asar`.
+
+```
+npm install -g asar
+asar pack your-app app.asar
+```
+
+### Application distribution using third-party modules
+
+https://github.com/electron-userland/electron-packager
+
+https://github.com/electron/windows-installer
+
+```
+npm install electron-packager -g
+electron-packager . app --platform win32 --arch x64 --out dist/
+```
+
+The `dist/app-win32-x64/` folder now has the same content with the manual distribution above (without asar).
+
+At project root (e.g. pwa-starter-kit), run:
+
+```
+npm install --save-dev electron-winstaller
+```
+
+Rename `app-win32-x64` to `AppWin32X64`. Create`installer.js`.
+
+```
+var electronInstaller = require('electron-winstaller');
+resultPromise = electronInstaller.createWindowsInstaller({
+  appDirectory: 'dist/AppWin32X64',
+  outputDirectory: 'installer/AppWin32X64',
+  authors: 'Designer App Inc.',
+  exe: 'app.exe'
+});
+
+resultPromise.then(() => console.log("It worked!"), (e) => console.log(`No dice: ${e.message}`));
+```
+
+Run `node installer.js`
+
+###### Common Errors
+
+* `Description is required.`: package.json in `resource/app/your-source/` [must have description](https://github.com/electron/windows-installer/issues/272).
+* [Product@version is invalid](https://github.com/electron/windows-installer/issues/203): remove all `-` in the app name (the `name` in package.json) and location.
+
+
+
+
+
+
+
 
 # PWA Starter Kit
 

@@ -1,5 +1,6 @@
 {
-  "name": "pwa-starter-kit",
+  "name": "PwaStarterKit",
+  "description": "Designer PWA using Polymer",
   "version": "0.9.0",
   "contributors": [
     "The Polymer Authors"
@@ -9,6 +10,7 @@
   "main": "main.js",
   "scripts": {
     "start": "electron .",
+    "installer": "node installer.js",
     "serve": "gulp serve",
     "build": "tsc && npm run build:prpl-server && npm run build:static",
     "build:prpl-server": "polymer build --auto-base-path && gulp prpl-server",
@@ -45,6 +47,7 @@
     "chai": "^4.1.2",
     "del": "^3.0.0",
     "electron": "^3.0.9",
+    "electron-winstaller": "^2.7.0",
     "gulp": "^4.0.0",
     "gulp-rename": "^1.3.0",
     "gulp-replace": "^1.0.0",
