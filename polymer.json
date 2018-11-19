@@ -16,22 +16,20 @@
   "builds": [
     {
       "name": "es6-bundled",
-      "basePath": false,
       "browserCapabilities": [
         "es2015"
       ],
       "js": {
-        "compile": "es2015",
-        "minify": false,
+        "minify": true,
         "transformModulesToAmd": true
       },
       "css": {
-        "minify": false
+        "minify": true
       },
       "html": {
-        "minify": false
+        "minify": true
       },
-      "bundle": false,
+      "bundle": true,
       "addServiceWorker": true
     }
   ],

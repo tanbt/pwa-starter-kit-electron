@@ -16,6 +16,10 @@ npm start
 ```
 npm run serve
 ```
+### Run with PRPL Server
+```
+npm run serve:prpl-server
+```
 
 ### Application distribution using third-party modules
 
