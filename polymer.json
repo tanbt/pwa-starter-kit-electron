@@ -15,6 +15,23 @@
   ],
   "builds": [
     {
+      "name": "es6-bundled-prpl",
+      "basePath": "/",
+      "browserCapabilities": ["es2015", "push"],
+      "js": {
+        "minify": true,
+        "transformModulesToAmd": true
+      },
+      "css": {
+        "minify": true
+      },
+      "html": {
+        "minify": true
+      },
+      "bundle": true,
+      "addServiceWorker": true
+    },
+    {
       "name": "es6-bundled",
       "basePath": "/",
       "browserCapabilities": [
