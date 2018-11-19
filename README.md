@@ -9,30 +9,12 @@
 ### Run with Electron
 ```
 npm install
-npm build
+npm run build
 npm start
 ```
 ### Run with Polymer CLI
 ```
 npm run serve
-```
-
-### Application distribution
-
-[On Windows](https://electronjs.org/docs/tutorial/application-distribution):
-
-* Download and extract the [prebuild electron](https://github.com/electron/electron/releases/download/v3.0.9/electron-v3.0.9-win32-x64.zip) (choose the correct version) to `electron` directory
-* Copy the running sources (which are used when run the project with npm `electron .`) into electron/`resources/app` such as: index.html and related front-end resources, main.js, package.json.
-* Execute `electron.exe` on Windows
-* The `electron` directory will then be your distribution to deliver to final users.
-
-##### [Packaging Your App into a File](https://electronjs.org/docs/tutorial/application-packaging)
-
-To use an `asar` archive to replace the `app` folder above, you need to rename the archive to `app.asar`.
-
-```
-npm install -g asar
-asar pack your-app app.asar
 ```
 
 ### Application distribution using third-party modules
@@ -43,15 +25,14 @@ https://github.com/electron/windows-installer
 
 ```
 npm install electron-packager -g
-electron-packager . app --platform win32 --arch x64 --out dist/
+npm install --save-dev electron-winstaller
 ```
 
 The `dist/app-win32-x64/` folder now has the same content with the manual distribution above (without asar).
 
 At project root (e.g. pwa-starter-kit), run:
-
 ```
-npm install --save-dev electron-winstaller
+electron-packager . app --platform win32 --arch x64 --out dist/
 ```
 
 Rename `app-win32-x64` to `AppWin32X64`. Create`installer.js`.
@@ -69,6 +50,24 @@ resultPromise.then(() => console.log("It worked!"), (e) => console.log(`No dice:
 ```
 
 Run `node installer.js`
+
+### Application distribution manually
+
+[On Windows](https://electronjs.org/docs/tutorial/application-distribution):
+
+* Download and extract the [prebuild electron](https://github.com/electron/electron/releases/download/v3.0.9/electron-v3.0.9-win32-x64.zip) (choose the correct version) to `electron` directory
+* Copy the running sources (which are used when run the project with npm `electron .`) into electron/`resources/app` such as: index.html and related front-end resources, main.js, package.json.
+* Execute `electron.exe` on Windows
+* The `electron` directory will then be your distribution to deliver to final users.
+
+##### [Packaging Your App into a File](https://electronjs.org/docs/tutorial/application-packaging)
+
+To use an `asar` archive to replace the `app` folder above, you need to rename the archive to `app.asar`.
+
+```
+npm install -g asar
+asar pack your-app app.asar
+```
 
 ###### Common Errors
 
