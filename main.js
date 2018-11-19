@@ -10,7 +10,7 @@ function createWindow () {
   mainWindow = new BrowserWindow({width: 1960, height: 1024})
   mainWindow.webContents.openDevTools()
   // and load the index.html of the app.
-  mainWindow.loadFile('build/es6-bundled/index.html')
+  mainWindow.loadFile('build/es6-bundled-electron/index.html')
 
   // Open the DevTools.
   // mainWindow.webContents.openDevTools()
