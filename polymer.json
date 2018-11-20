@@ -51,6 +51,23 @@
       "addServiceWorker": true
     },
     {
+      "name": "es5-bundled",
+      "basePath": "/",
+      "js": {
+        "minify": true,
+        "compile": true,
+        "transformModulesToAmd": true
+      },
+      "css": {
+        "minify": true
+      },
+      "html": {
+        "minify": true
+      },
+      "bundle": true,
+      "addServiceWorker": true
+    },
+    {
       "name": "es6-bundled-electron",
       "browserCapabilities": [
         "es2015"
